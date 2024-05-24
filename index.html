@@ -1,23 +1,21 @@
 <!doctype html>
 <html>
   <head>
-    <!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script> -->
-    <script src="pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+    <!-- <script src="pyodide.js"></script> -->
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h2> Pyodide WASM </h2>
     <h2>Running main.py with Pyodide</h2>
+    
     <script type="text/javascript">
-        async function main(){
-          let pyodide = await loadPyodide();
-          console.log(pyodide.runPython(`
-              import sys
-              sys.version
-          `));
-          pyodide.runPython("print(1 + 2)");
-        }
-        main();
-      </script>
+      async function main(){
+        let pyodide = await loadPyodide();
+        console.log(pyodide.runPython("1 + 2"));
+      }
+      main();
+    </script>
+
   </body>
 </html>
