@@ -1,1 +1,25 @@
-<h1> Pyodide WASM </h1>
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+  </head>
+  <body>
+    <h1> Pyodide WASM </h1>
+    <h1>Running main.py with Pyodide</h1>
+    <script type="text/javascript">
+      async function main() {
+        let pyodide = await loadPyodide();
+        // Assuming main.py is a string variable holding your Python code
+        let mainScript = `
+            import sys
+            sys.path.append('path/to/your/python/scripts')
+            from main import main_function  # Adjust according to your script structure
+            main_function()`;
+
+        // Execute the Python script
+        pyodide.runPython(mainScript);
+      }
+      main();
+    </script>
+  </body>
+</html>
