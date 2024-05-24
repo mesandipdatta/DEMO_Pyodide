@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
   <head>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script> -->
+    <script src="pyodide.js"></script>
   </head>
   <body>
     <h1> Pyodide WASM </h1>
@@ -12,7 +13,7 @@
         // Assuming main.py is a string variable holding your Python code
         let mainScript = `
             import sys
-            sys.path.append('path/to/your/python/scripts')
+            sys.path.append('main.py')
             from main import main_function  # Adjust according to your script structure
             main_function()`;
 
