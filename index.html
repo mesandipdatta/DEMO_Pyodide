@@ -9,19 +9,15 @@
     <h2> Pyodide WASM </h2>
     <h2>Running main.py with Pyodide</h2>
     <script type="text/javascript">
-      async function main() {
-        let pyodide = await loadPyodide();
-        // Assuming main.py is a string variable holding your Python code
-        let mainScript = `
-            import sys
-            sys.path.append('main.py')
-            from main import main_function  # Adjust according to your script structure
-            main_function()`;
-
-        // Execute the Python script
-        pyodide.runPython(mainScript);
-      }
-      main();
-    </script>
+        async function main(){
+          let pyodide = await loadPyodide();
+          console.log(pyodide.runPython(`
+              import sys
+              sys.version
+          `));
+          pyodide.runPython("print(1 + 2)");
+        }
+        main();
+      </script>
   </body>
 </html>
