@@ -17,23 +17,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         loadingMessage.style.display = "none";
         translateButton.disabled = false;
   
+        // Fetch the Python code from the main.py file
+        const response = await fetch('main.py');
+        const pythonCode = await response.text();
+  
         // Function to run the Python script
         async function translateEnglish() {
           // Get the input value
           let englishText = document.getElementById("english").value;
   
-          // Define the Python code to translate text
-          const pythonCode = `
-  def translate_english(text):
-      # Replace this function with the actual translation logic
-      pirate_speak = text.replace("hello", "ahoy").replace("my", "me")
-      return pirate_speak
+          // Create a complete Python script to execute
+          const completePythonCode = `
+  ${pythonCode}
   
   translate_english('${englishText}')
           `;
   
           // Run the Python code
-          let result = await pyodide.runPythonAsync(pythonCode);
+          let result = await pyodide.runPythonAsync(completePythonCode);
   
           // Display the result
           document.getElementById("output").innerText = result;
