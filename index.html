@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Polyglot Translator</title>
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.21.0/full/pyodide.js"></script>
   <script src="codeishere.js"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Polyglot </h1>
+  <h1>Polyglot 🦜 💬 🇬🇧 ➡️ 🏴‍☠️</h1>
   <p>Translate English into Pirate speak...</p>
   <input type="text" id="english" placeholder="Type English here..." />
-  <button id="translateButton">Translate</button>
+  <button id="translateButton" disabled>Translate</button>
   <div id="output"></div>
+  <div id="loadingMessage">Loading Pyodide, please wait...</div>
 </body>
 </html>
