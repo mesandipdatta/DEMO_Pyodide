@@ -4,13 +4,13 @@ async function main() {
     const translateButton = document.getElementById("translateButton");
   
     try {
-      // Display loading message
-      loadingMessage.style.display = "block";
-      
       // Load Pyodide
       let pyodide = await loadPyodide({
         indexURL: "https://cdn.jsdelivr.net/pyodide/v0.21.0/full/"
       });
+  
+      // Ensure Pyodide is fully initialized
+      await pyodide.loadPackage('micropip');
   
       // Hide loading message and enable the button
       loadingMessage.style.display = "none";
