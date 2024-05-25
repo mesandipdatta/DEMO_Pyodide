@@ -9,11 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const startTime = performance.now();
   
       try {
+        console.log("Starting Pyodide load");
         // Load Pyodide
         let pyodide = await loadPyodide({
           indexURL: "https://cdn.jsdelivr.net/pyodide/v0.21.0/full/"
         });
   
+        console.log("Pyodide loaded, loading micropip package");
         // Ensure Pyodide is fully initialized
         await pyodide.loadPackage('micropip');
   
@@ -29,6 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
         // Display the loading time
         loadingTime.innerText = `Pyodide loaded in ${loadTime} milliseconds.`;
+        console.log(`Pyodide loaded in ${loadTime} milliseconds.`);
   
         // Fetch the Python code from the main.py file
         const response = await fetch('main.py');
