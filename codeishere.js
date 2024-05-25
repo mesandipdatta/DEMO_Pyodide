@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Load and initialize Pyodide
     async function main() {
       const loadingMessage = document.getElementById("loadingMessage");
+      const loadingTime = document.getElementById("loadingTime");
       const translateButton = document.getElementById("translateButton");
+  
+      // Record the start time
+      const startTime = performance.now();
   
       try {
         // Load Pyodide
@@ -13,9 +17,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Ensure Pyodide is fully initialized
         await pyodide.loadPackage('micropip');
   
+        // Record the end time
+        const endTime = performance.now();
+  
+        // Calculate the loading time
+        const loadTime = (endTime - startTime).toFixed(2);
+  
         // Hide loading message and enable the button
         loadingMessage.style.display = "none";
         translateButton.disabled = false;
+  
+        // Display the loading time
+        loadingTime.innerText = `Pyodide loaded in ${loadTime} milliseconds.`;
   
         // Fetch the Python code from the main.py file
         const response = await fetch('main.py');
